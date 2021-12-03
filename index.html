@@ -52,30 +52,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script>
-        var QazaxIpsum = function () {};
-        QazaxIpsum.WORDS_PER_SENTENCE_AVG = 24.460;
+        var Talipsum = function () {};
+        Talipsum.WORDS_PER_SENTENCE_AVG = 24.460;
 
-        QazaxIpsum.WORDS_PER_SENTENCE_STD = 5.080;
+        Talipsum.WORDS_PER_SENTENCE_STD = 5.080;
 
-        QazaxIpsum.WORDS = [
+        Talipsum.WORDS = [
 'az','tı','əv','ne','ha','boçi','çıro','çok','bevəc','boy','bışi','çand','omə','cıvon','kinə',
 'zoə','moğnə','çımı','ıştı','manq','merd','jen','piəmerd','avəvu','qemıj','harde','barde','karde',
 'sədo','nıvışte','band','siyo','zard','dıyo','xok','məse','zıvon','çaş','yəznə','xeyzon','bahand','hande','kande',
 'qədə','iminə','maştə', 'şanqo','nanqır','umute','varde','diəro','miyonə','oqard','ımruj','dışmen','osmon','vinde',
 'arışte','vığande','sıxan','fik karde',""
         ];
-        QazaxIpsum.prototype.generate = function (num_words) {
+        Talipsum.prototype.generate = function (num_words) {
             var words, ii, position, word, current, sentences, sentence_length, sentence;
 
 
             num_words = num_words || 100;
 
-            words = [QazaxIpsum.WORDS[0], QazaxIpsum.WORDS[1]];
+            words = [Talipsum.WORDS[0], Talipsum.WORDS[1]];
             num_words -= 2;
 
             for (ii = 0; ii < num_words; ii++) {
-                position = Math.floor(Math.random() * QazaxIpsum.WORDS.length);
-                word = QazaxIpsum.WORDS[position];
+                position = Math.floor(Math.random() * Talipsum.WORDS.length);
+                word = Talipsum.WORDS[position];
 
                 if (ii > 0 && words[ii - 1] === word) {
                     ii -= 1;
@@ -112,7 +112,7 @@
         };
 
 
-        QazaxIpsum.prototype.punctuate = function (sentence) {
+        Talipsum.prototype.punctuate = function (sentence) {
             var word_length, num_commas, ii, position;
 
             word_length = sentence.length;
@@ -139,7 +139,7 @@
         };
 
 
-        QazaxIpsum.prototype.getRandomCommaCount = function (word_length) {
+        Talipsum.prototype.getRandomCommaCount = function (word_length) {
             var base, average, standard_deviation;
 
             base = 6;
@@ -151,24 +151,24 @@
         };
 
 
-        QazaxIpsum.prototype.getRandomSentenceLength = function () {
+        Talipsum.prototype.getRandomSentenceLength = function () {
             return Math.round(
                 this.gaussMS(
-                    QazaxIpsum.WORDS_PER_SENTENCE_AVG,
-                    QazaxIpsum.WORDS_PER_SENTENCE_STD
+                    Talipsum.WORDS_PER_SENTENCE_AVG,
+                    Talipsum.WORDS_PER_SENTENCE_STD
                 )
             );
         };
 
 
-        QazaxIpsum.prototype.gauss = function () {
+        Talipsum.prototype.gauss = function () {
             return (Math.random() * 2 - 1) +
                 (Math.random() * 2 - 1) +
                 (Math.random() * 2 - 1);
         };
 
 
-        QazaxIpsum.prototype.gaussMS = function (mean, standard_deviation) {
+        Talipsum.prototype.gaussMS = function (mean, standard_deviation) {
             return Math.round(this.gauss() * standard_deviation + mean);
         };
 
